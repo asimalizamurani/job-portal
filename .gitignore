@@ -1,0 +1,88 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific folders
+/.vs/
+.vscode/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+*.obj
+*.idb
+*.pdb
+*.pyc
+*.pyo
+
+# Build results
+bin/
+obj/
+debug/
+release/
+build/
+**/bin/
+**/obj/
+
+# Visual Studio specific
+*.userprefs
+*.sln.docstates
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cache
+*.ilk
+*.map
+*.pch
+*.pdb
+*.idb
+*.tlog
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.log
+*.vs/
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+
+# Visual Studio Code specific
+.vscode/
+*.code-workspace
+
+# NuGet Packages
+*.nupkg
+packages/
+**/packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# Azure Web Apps
+.publish/
+
+# Rider files
+.idea/
+*.sln.iml
+.idea/workspace.xml
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
