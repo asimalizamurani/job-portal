@@ -15,8 +15,24 @@ namespace OnlineJobs.Controllers
 
         public IActionResult Index()
         {
+            var username = HttpContext.Session.GetString("Username");
+            var role = HttpContext.Session.GetString("Role");
+
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+            ViewBag.Username = username;
+            ViewBag.Role = role;
             return View();
         }
+
+
+      /*  public IActionResult Index()
+        {
+            return View();
+        }*/
 
         public IActionResult Privacy()
         {
@@ -27,6 +43,15 @@ namespace OnlineJobs.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Help()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
         }
     }
 }

@@ -1,3 +1,26 @@
-﻿@using OnlineJobs
-@using OnlineJobs.Models
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using OnlineJobs.Models
+
+
+@{
+    ViewData["Title"] = "Home Page";
+    var username = Context.Session.GetString("Username"); // Get session data
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<nav>
+    <ul>
+        @if (!string.IsNullOrEmpty(username))
+        {
+            <li>Welcome, @username</li>
+            <li><a href="/User/Logout">Logout</a></li>
+        }
+        else
+        {
+            <li><a href="/User/Login">Login</a></li>
+        }
+    </ul>
+</nav>

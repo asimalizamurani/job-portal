@@ -20,3 +20,51 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.navbar {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important;
+}
+
+.nav-link {
+    color: #f8f9fa !important;
+    font-weight: 500;
+}
+
+    .nav-link:hover {
+        color: #ffdd57 !important;
+    }
+
+.btn-primary {
+    background-color: #ffdd57;
+    border: none;
+    color: #000;
+}
+
+    .btn-primary:hover {
+        background-color: #fbbd08;
+    }
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: none;
+    border: none;
+}
+
+    .close-btn:hover {
+        color: #ffdd57;
+    }
+
+button a {
+    text-decoration: none;
+    color: #fff;
+}

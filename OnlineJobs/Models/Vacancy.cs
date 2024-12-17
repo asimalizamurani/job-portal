@@ -12,5 +12,8 @@
         public DateTime CreatedAt { get; set; }
 
         public User CreatedByUser { get; set; } // Navigation Property
+
+        public ICollection<Interview> Interviews { get; set; } // Navigation Property
+
     }
 }

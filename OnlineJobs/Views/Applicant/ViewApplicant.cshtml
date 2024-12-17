@@ -1,0 +1,51 @@
+﻿@model IEnumerable<OnlineJobs.Models.Applicant>
+
+@{
+    ViewBag.Title = "View Applicants";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Applicants List</h1>
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Applicants Details</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Vacancy ID</th>
+                        <th>Resume</th>
+                        <th>Applied At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var applicant in Model)
+                    {
+                        <tr>
+                            <td>@applicant.ApplicantId</td>
+                            <td>@applicant.Name</td>
+                            <td>@applicant.Email</td>
+                            <td>@applicant.Role</td>
+                            <td>@applicant.AttachedVacancyId</td>
+                            <td>
+                                <a href="@applicant.ResumePath" target="_blank" class="btn btn-link">View Resume</a>
+                            </td>
+                            <td>@applicant.AppliedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Applicant", new { id = applicant.ApplicantId })" class="btn btn-info btn-sm">Details</a>
+                                <a href="@Url.Action("Delete", "Applicant", new { id = applicant.ApplicantId })" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

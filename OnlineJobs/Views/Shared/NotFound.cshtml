@@ -1,0 +1,32 @@
+﻿@model string 
+
+<style>
+    body {
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h1 class="text-danger">404 - Page Not Found</h1>
+                    <p>Oops! The page you're looking for doesn't seem to exist.</p>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Go to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

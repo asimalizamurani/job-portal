@@ -1,0 +1,45 @@
+﻿@* @model OnlineJobs.Models.Interview
+
+@{
+    ViewData["Title"] = "Interview Details";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h4>Interview Details</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Applicant</th>
+                        <td>@Model.Applicant.Name</td>
+                    </tr>
+                    <tr>
+                        <th>Vacancy</th>
+                        <td>@Model.Vacancy.Title</td>
+                    </tr>
+                    <tr>
+                        <th>Interviewer</th>
+                        <td>@Model.Interviewer.Username </td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>@Model.Date.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td>@Model.Time.ToString(@"hh\:mm")</td>
+                    </tr>
+                    <tr>
+                        <th>Result</th>
+                        <td>@Model.Result</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> *@
+
+<h2> Hello bro </h2>

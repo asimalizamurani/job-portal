@@ -11,5 +11,6 @@
         public DateTime AppliedAt { get; set; }
 
         public Vacancy AttachedVacancy { get; set; } // Navigation Property
+        public ICollection<Interview> Interviews { get; set; } // Navigation Property
     }
 }

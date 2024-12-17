@@ -56,7 +56,7 @@ namespace OnlineJobs.Migrations
 
                     b.HasIndex("AttachedVacancyId");
 
-                    b.ToTable("Applicants");
+                    b.ToTable("Applicants", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobs.Models.Department", b =>
@@ -73,7 +73,7 @@ namespace OnlineJobs.Migrations
 
                     b.HasKey("DepartmentId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobs.Models.User", b =>
@@ -105,7 +105,7 @@ namespace OnlineJobs.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobs.Models.Vacancy", b =>
@@ -148,7 +148,7 @@ namespace OnlineJobs.Migrations
 
                     b.HasIndex("CreatedByUserUserId");
 
-                    b.ToTable("Vacancies");
+                    b.ToTable("Vacancies", (string)null);
                 });
 
             modelBuilder.Entity("OnlineJobs.Models.Applicant", b =>

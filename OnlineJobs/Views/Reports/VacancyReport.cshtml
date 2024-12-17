@@ -1,0 +1,64 @@
+﻿@model OnlineJobs.Controllers.ReportsController.VacancyReportViewModel
+
+@{
+    ViewData["Title"] = "Vacancy Report";
+}
+
+<div class="container mt-4">
+    <h2>Vacancy Report</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Vacancies</h5>
+                    <h3 class="card-text">@Model.TotalVacancies</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Open Vacancies</h5>
+                    <h3 class="card-text">@Model.OpenVacancies</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Closed Vacancies</h5>
+                    <h3 class="card-text">@Model.ClosedVacancies</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Vacancies by Department</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.VacanciesByDepartment)
+                    {
+                        <tr>
+                            <td>@item.Department</td>
+                            <td>@item.Count</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" style="text-decoration: none;">
+        <a href="/Reports/ApplicantReport" style="color: inherit; text-decoration: none;">Back</a>
+    </button>
+
+</div>

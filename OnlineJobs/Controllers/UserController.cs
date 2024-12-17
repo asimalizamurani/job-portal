@@ -36,24 +36,38 @@ namespace OnlineJobs.Controllers
                 return View(model);
             }
 
-            if (_context.Users.Any(u => u.Username == model.Username))
+            try
             {
-                ModelState.AddModelError("Username", "Username is already taken.");
+                if (_context.Users.Any(u => u.Username == model.Username))
+                {
+                    ModelState.AddModelError("Username", "Username is already taken.");
+                    return View(model);
+                }
+
+                if (_context.Users.Any(u => u.Email == model.Email))
+                {
+                    ModelState.AddModelError("Email", "Email is already registered.");
+                    return View(model);
+                }
+
+                // Hash the password
+                model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+
+                // Add the user to the database
+                _context.Users.Add(model);
+                await _context.SaveChangesAsync();
+
+                Console.WriteLine("User registered successfully: " + model.Username);
+                return RedirectToAction("Login");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error while registering user: " + ex.Message);
+                ModelState.AddModelError("", "An error occurred. Please try again.");
                 return View(model);
             }
-
-            if (_context.Users.Any(u => u.Email == model.Email))
-            {
-                ModelState.AddModelError("Email", "Email is already registered.");
-                return View(model);
-            }
-
-            model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
-            _context.Users.Add(model);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Login");
         }
+
 
         // GET: Login
         [HttpGet]
@@ -79,30 +93,51 @@ namespace OnlineJobs.Controllers
                 return View();
             }
 
+            // Create claims for authentication
             var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, user.Role)
-            };
+    {
+        new Claim(ClaimTypes.Name, user.Username),
+        new Claim(ClaimTypes.Role, user.Role)
+    };
 
+            // Create claims identity
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
             var authProperties = new AuthenticationProperties
             {
                 IsPersistent = true, // Remember the user
                 ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1)
             };
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+            // Sign in user
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties
+            );
+
+            // Store user information in session
+            HttpContext.Session.SetString("Username", user.Username);
+            HttpContext.Session.SetString("Role", user.Role);
+
+            Console.WriteLine($"User {user.Username} logged in successfully.");
 
             return RedirectToAction("Index", "Home");
         }
+
+
 
         // GET: Logout
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Clear session data
+            HttpContext.Session.Clear();
+
             return RedirectToAction("Login");
         }
+
     }
 }

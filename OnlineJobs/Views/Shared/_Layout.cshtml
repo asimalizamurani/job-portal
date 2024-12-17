@@ -10,29 +10,52 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineJobs</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/Home/Index">Recruitment Guide</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse position-relative" id="navbarNav">
+                    <!-- Close button for mobile view -->
+                    <button class="close-btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Close">
+                        &times;
+                    </button>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" href="/Dashboard/ViewDashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" href="/Vacancy/ViewVacancy">Vacancies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                            <a class="nav-link" href="/Applicant/ViewApplicant">Applicants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Interview/ViewInterview">Interviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Reports/ApplicantReport">Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Help">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/About">About</a>
                         </li>
                     </ul>
+                    <button class="btn btn-primary" style="text-decoration: none;">
+                        <a href="/User/Login" style="color: inherit; text-decoration: none;">Login</a>
+                    </button>
+                    <button class="btn btn-primary" style="text-decoration: none;">
+                        <a href="/User/Logout" style="color: inherit; text-decoration: none;">Logout</a>
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

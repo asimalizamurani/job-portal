@@ -1,0 +1,78 @@
+﻿@model OnlineJobs.Models.Vacancy
+
+@{
+    ViewData["Title"] = "Create Vacancy";
+}
+
+<style>
+    /* Custom styles for CreateVacancy page */
+    .create-form {
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    .create-form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .create-form input,
+    .create-form select,
+    .create-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .create-form button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2>Create New Vacancy</h2>
+
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post" class="create-form">
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Department">Department</label>
+                    <input asp-for="Department" class="form-control" />
+                    <span asp-validation-for="Department" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PositionsAvailable">Positions Available</label>
+                    <input asp-for="PositionsAvailable" type="number" class="form-control" />
+                    <span asp-validation-for="PositionsAvailable" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Create Vacancy</button>
+            </form>
+        </div>
+    </div>
+    <button class="btn btn-primary" style="text-decoration: none;">
+        <a href="/Vacancy/ViewVacancy" style="color: inherit; text-decoration: none;">Back</a>
+    </button>
+</div>

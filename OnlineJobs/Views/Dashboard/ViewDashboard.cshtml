@@ -1,0 +1,101 @@
+﻿@model OnlineJobs.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Applicants</h5>
+                    <h3 class="card-text text-primary">@Model.TotalApplicants</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Open Vacancies</h5>
+                    <h3 class="card-text text-success">@Model.OpenVacancies</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Completed Interviews</h5>
+                    <h3 class="card-text text-info">@Model.CompletedInterviews</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Recent Applicants</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (var applicant in Model.RecentApplicants)
+                        {
+                            <li class="list-group-item">
+                                @applicant.Name
+                                <span class="text-muted"> - Applied On: @applicant.AppliedAt.ToString("yyyy-MM-dd")</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Upcoming Interviews</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (var interview in Model.UpcomingInterviews)
+                        {
+                            <li class="list-group-item">
+                                Interview with @interview.Applicant.Name
+                                <span class="text-muted"> - Scheduled for: @interview.Date.ToString("yyyy-MM-dd") @interview.Time.ToString(@"hh\:mm")</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Recent Vacancies</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (var vacancy in Model.RecentVacancies)
+                        {
+                            <li class="list-group-item">
+                                @vacancy.Title
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* Optional CSS for styling */
+    body {
+        background-color: #f8f9fa;
+    }
+</style>
